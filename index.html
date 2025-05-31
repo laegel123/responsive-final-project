@@ -161,7 +161,7 @@
             <section class="third-header">
                 <section class="third-header-vehicles" id="menu-vehicles">
                     <div>
-                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg"></button>
+                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg" alt="cancel image"></button>
                     </div>
                     <div class="section-vehicles">
                         <div>
@@ -204,7 +204,7 @@
 
                 <section class="third-header-shopping-tools" id="menu-shopping-tools">
                     <div>
-                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg"></button>
+                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg" alt="cancel image"></button>
                     </div>
                     <div class="section-shopping-tools">
                         <div class="left-shopping-tools">
@@ -284,7 +284,7 @@
 
                 <section class="third-header-shopping-tools" id="menu-owners">
                     <div>
-                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg"></button>
+                        <button class="third-header-cancel-btn"><img src="./assets/icon/cancel2.svg" alt="cancel image"></button>
                     </div>
                     <div class="section-shopping-tools">
                         <div class="left-shopping-tools clearfix">
@@ -973,99 +973,99 @@
 
         <section class="footer-cookie">
             <a href="#">
-                <img src="./assets/icon/cookie-black.png">
+                <img src="./assets/icon/cookie-black.png" alt="cookie icon">
             </a>
         </section>
 
         <section class="footer-chat">
             <a href="#">
-                <img src="./assets/icon/chat.png">
+                <img src="./assets/icon/chat.png" alt="chat icon">
             </a>
         </section>
     </footer>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.second-header-center ul li');
+            const thirdHeaders = {
+                'Vehicles': document.getElementById('menu-vehicles'),
+                'Shopping Tools': document.getElementById('menu-shopping-tools'),
+                'Owners': document.getElementById('menu-owners')
+            };
+      
+            navItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+    
+                    const isActive = this.classList.contains('active');
+                    // Reset all states
+                    navItems.forEach(i => {
+                        i.classList.remove('active');
+                        const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'inline'; // down
+                            arrows[1].style.display = 'none'; // up
+                        }
+                    });
+    
+                    Object.values(thirdHeaders).forEach(section => {
+                        section.style.display = 'none';
+                    });
+    
+                    if (!isActive) {
+                        this.classList.add('active');
+                        const arrows = this.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'none'; // down
+                            arrows[1].style.display = 'inline'; // up
+                        }
+                        const menuLabel = this.textContent.trim();
+                        const targetSection = thirdHeaders[menuLabel];
+                        if (targetSection) {
+                            targetSection.style.display = 'block';
+                        }
+                    }
+                });
+            });
+      
+            // Set initial state: hide all third-header sections and up arrows
+            Object.values(thirdHeaders).forEach(section => {
+                section.style.display = 'none';
+            });
+      
+            document.querySelectorAll('.arrow-up').forEach(up => {
+                up.style.display = 'none';
+            });
+      
+            // Cancel buttons
+            document.querySelectorAll('.third-header-cancel-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    Object.values(thirdHeaders).forEach(section => {
+                        section.style.display = 'none';
+                    });
+      
+                    navItems.forEach(i => {
+                        i.classList.remove('active');
+                        const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'inline'; // down
+                            arrows[1].style.display = 'none'; // up
+                        }
+                    });
+                });
+            });
+        });
+    
+        function showSubMenu(id) {
+            document.querySelector('.main-menu').style.display = 'none';
+            document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+        function hideSubMenu() {
+            document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+            document.querySelector('.main-menu').style.display = 'block';
+        }
+    </script>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const navItems = document.querySelectorAll('.second-header-center ul li');
-        const thirdHeaders = {
-            'Vehicles': document.getElementById('menu-vehicles'),
-            'Shopping Tools': document.getElementById('menu-shopping-tools'),
-            'Owners': document.getElementById('menu-owners')
-        };
-  
-        navItems.forEach(item => {
-            item.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const isActive = this.classList.contains('active');
-                // Reset all states
-                navItems.forEach(i => {
-                    i.classList.remove('active');
-                    const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
-                    if (arrows.length) {
-                        arrows[0].style.display = 'inline'; // down
-                        arrows[1].style.display = 'none'; // up
-                    }
-                });
-
-                Object.values(thirdHeaders).forEach(section => {
-                    section.style.display = 'none';
-                });
-
-                if (!isActive) {
-                    this.classList.add('active');
-                    const arrows = this.querySelectorAll('.arrow-down, .arrow-up');
-                    if (arrows.length) {
-                        arrows[0].style.display = 'none'; // down
-                        arrows[1].style.display = 'inline'; // up
-                    }
-                    const menuLabel = this.textContent.trim();
-                    const targetSection = thirdHeaders[menuLabel];
-                    if (targetSection) {
-                        targetSection.style.display = 'block';
-                    }
-                }
-            });
-        });
-  
-        // Set initial state: hide all third-header sections and up arrows
-        Object.values(thirdHeaders).forEach(section => {
-            section.style.display = 'none';
-        });
-  
-        document.querySelectorAll('.arrow-up').forEach(up => {
-            up.style.display = 'none';
-        });
-  
-        // Cancel buttons
-        document.querySelectorAll('.third-header-cancel-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                Object.values(thirdHeaders).forEach(section => {
-                    section.style.display = 'none';
-                });
-  
-                navItems.forEach(i => {
-                    i.classList.remove('active');
-                    const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
-                    if (arrows.length) {
-                        arrows[0].style.display = 'inline'; // down
-                        arrows[1].style.display = 'none'; // up
-                    }
-                });
-            });
-        });
-    });
-
-    function showSubMenu(id) {
-        document.querySelector('.main-menu').style.display = 'none';
-        document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
-        document.getElementById(id).style.display = 'block';
-    }
-    function hideSubMenu() {
-        document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
-        document.querySelector('.main-menu').style.display = 'block';
-    }
-</script>
 </html>
