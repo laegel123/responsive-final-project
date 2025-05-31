@@ -23,7 +23,7 @@
                     <!-- Hamburger menu toggle -->
                     <div>
                         <label for="menu-toggle" class="hamburger-icon">
-                            <img class="w-25" src="./assets/icon/hamburger.png" alt="hamburger icon">
+                            <img class="w-25" id="hamburger-img" src="./assets/icon/hamburger.png" alt="hamburger icon">
                         </label>
                     </div>
                 </div>
@@ -1055,6 +1055,21 @@
                     });
                 });
             });
+        });
+
+        const toggle = document.getElementById("menu-toggle");
+        const hamburgerImg = document.getElementById("hamburger-img");
+
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+            // 메뉴 열림: 햄버거 → 닫기 이미지 + 회전
+            hamburgerImg.src = "./assets/icon/cancel.svg";
+            hamburgerImg.style.animation = "rotateIn 0.3s forwards";
+            } else {
+            // 메뉴 닫힘: 닫기 → 햄버거 이미지 + 회전 반대
+            hamburgerImg.src = "./assets/icon/hamburger.png";
+            hamburgerImg.style.animation = "rotateOut 0.3s forwards";
+            }
         });
     
         function showSubMenu(id) {

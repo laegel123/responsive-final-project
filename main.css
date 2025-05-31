@@ -135,10 +135,12 @@
 
 
 
+
+
 /* mobile menu */
 .mobile-menu {
     position: fixed;
-    top: 60px; /* assuming header height is ~60px */
+    top: 60px;
     left: 0;
     right: 0;
     height: calc(100vh - 60px);
@@ -194,6 +196,29 @@
     display: flex;
     justify-content: flex-end;
     padding: 10px 15px;
+}
+
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotateOut {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.hamburger-icon img {
+  transition: transform 0.3s ease;
 }
 
 
