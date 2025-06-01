@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Hyundai Canada</title>
+    <style>
+        .footer-faq {
+            padding: 2rem 1rem;
+            background: #f9f9f9;
+            border-top: 1px solid #ccc;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: #4aa4d8;
+            color: white;
+            border: none;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question:hover {
+            background: #388bb9;
+        }
+        .faq-answer {
+            display: none;
+            padding: 1rem 1.5rem;
+            background: #ffffff;
+            border-left: 4px solid #4aa4d8;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .footer-faq h2 {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- mobile start -->
+            <div class="mobile-header">
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <div class="mobile-header-inner">
+
+                    <div class="mobile-header-left">
+                        <a href="#">
+                            <img class="logo w-25" src="../assets/logo/logo.png" alt="logo image">
+                        </a>
+                    </div>
+
+                    <!-- Hamburger menu toggle -->
+                    <div>
+                        <label for="menu-toggle" class="hamburger-icon">
+                            <img class="w-25" id="hamburger-img" src="../assets/icon/hamburger.png" alt="hamburger icon">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Hidden menu content -->
+                <div class="mobile-menu">
+                    <ul class="main-menu">
+                        <li><a href="#" onclick="showSubMenu('vehicles-submenu')"><img class="w-25" src="../assets/icon/car.svg" alt="Search New Inventory"> Vehicles</a></li>
+                        <li><a href="#" onclick="showSubMenu('tools-submenu')"><img class="w-25" src="../assets/icon/cart.svg" alt="Shop Online"> Shopping Tools</a></li>
+                        <li><a href="#" onclick="showSubMenu('owners-submenu')"><img class="w-25" src="../assets/icon/bookmark.svg" alt="Book a Test Drive"> Owners</a></li>
+                        <li><a href="#" onclick="showSubMenu('offers-submenu')"><img class="w-25" src="../assets/icon/percent-navy.svg" alt="percent image"> Offers</a></li>
+                        <li><a href="#" onclick="showSubMenu('build-submenu')"><img class="w-25" src="../assets/icon/tools-navy.svg" alt="Build & Price"> Build&Price</a></li>
+                    </ul>
+
+                    <!-- Submenus -->
+                    <div class="submenu" id="vehicles-submenu" style="display:none;">
+                        <div class="back-button" onclick="hideSubMenu()"><img class="arrow-left-menu w-25" src="../assets/icon/arrow-left.png" alt="arrow icon"></div>
+                        <ul>
+                            <li><a href="#">Crossover & SUV</a></li>
+                            <li><a href="#">Electrified</a></li>
+                            <li><a href="#">Compact & Sedan</a></li>
+                            <li><a href="#">High Performance</a></li>
+                            <li><a href="#">View All Vehicles</a></li>
+                        </ul>
+                    </div>
+                    <div class="submenu" id="tools-submenu" style="display:none;">
+                        <div class="back-button" onclick="hideSubMenu()"><img class="arrow-left-menu w-25" src="../assets/icon/arrow-left.png" alt="arrow icon"></div>
+                        <ul>
+                            <li><a href="#">Build & Price</a></li>
+                            <li><a href="#">Request a Quote</a></li>
+                            <li><a href="#">Search New Inventory</a></li>
+                            <li><a href="#">Shop Online</a></li>
+                            <li><a href="#">Book a Test Drive</a></li>
+                            <li><a href="#">Compare Vehicles</a></li>
+                        </ul>
+                    </div>
+                    <div class="submenu" id="owners-submenu" style="display:none;">
+                        <div class="back-button" onclick="hideSubMenu()"><img class="arrow-left-menu w-25" src="../assets/icon/arrow-left.png" alt="arrow icon"></div>
+                        <ul>
+                            <li><a href="#">Build & Price</a></li>
+                            <li><a href="#">Request a Quote</a></li>
+                            <li><a href="#">Search New Inventory</a></li>
+                            <li><a href="#">Shop Online</a></li>
+                            <li><a href="#">Book a Test Drive</a></li>
+                            <li><a href="#">Compare Vehicles</a></li>
+                        </ul>
+                    </div>
+                    <div class="submenu" id="offers-submenu" style="display:none;">
+                        <div class="back-button" onclick="hideSubMenu()"><img class="arrow-left-menu w-25" src="../assets/icon/arrow-left.png" alt="arrow icon"></div>
+                        <ul>
+                            <li><a href="#">Current Offers</a></li>
+                            <li><a href="#">Financing</a></li>
+                        </ul>
+                    </div>
+                    <div class="submenu" id="build-submenu" style="display:none;">
+                        <div class="back-button" onclick="hideSubMenu()"><img class="arrow-left-menu w-25" src="../assets/icon/arrow-left.png" alt="arrow icon"></div>
+                        <ul>
+                            <li><a href="#">Choose Trim</a></li>
+                            <li><a href="#">Customize</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile end -->
+
+            <div class="top-header">
+                <div class="top-header-center">
+                    <a href="#">
+                        <img src="../assets/icon/location.png" alt="map icon">
+                        <span>Find My Dealer</span>
+                    </a>
+        
+                    <a>   
+                        <img src="../assets/icon/world.png" alt="world icon">
+                        <span>Vancouver</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- second header -->
+            <div class="second-header">
+                <div class="second-header-inner">
+                    <div class="second-header-center">
+                        <a href="index.html"><img class="logo" src="../assets/logo/logo.png" alt="logo image"></a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span>Vehicles</span>
+                                    <img class="arrow-down" src="../assets/icon/arrow-down.svg" alt="arrow icon">
+                                    <img class="arrow-up" style="display: none;" src="../assets/icon/arrow-up.svg" alt="arrow icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Shopping Tools</span>
+                                    <img class="arrow-down" src="../assets/icon/arrow-down.svg" alt="arrow icon">
+                                    <img class="arrow-up" style="display: none;" src="../assets/icon/arrow-up.svg" alt="arrow icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Owners</span>
+                                    <img class="arrow-down" src="../assets/icon/arrow-down.svg" alt="arrow icon">
+                                    <img class="arrow-up" style="display: none;" src="../assets/icon/arrow-up.svg" alt="arrow icon">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="second-header-right">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="percent-icon">
+                                        <img src="../assets/icon/percent-navy.svg" alt="percent image">
+                                    </span>
+                                    <span>Offers</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="percent-icon">
+                                        <img src="../assets/icon/tools-navy.svg" alt="percent image">
+                                    </span>
+                                    <span>Build&Price</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- third header -->
+            <div class="third-header">
+                <div class="third-header-vehicles" id="menu-vehicles">
+                    <div>
+                        <button class="third-header-cancel-btn"><img src="../assets/icon/cancel2.svg" alt="cancel image"></button>
+                    </div>
+                    <div class="section-vehicles">
+                        <div>
+                            <a href="./pages/sample.html">
+                                <img class="vehicles-image" src="../assets/car/santa-fe.png" alt="santa-fe image">
+                                <span>Crossover & SUV</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="./pages/sample.html">
+                                <img class="vehicles-image" src="../assets/car/ioniq-5.png" alt="ioniq-5 image">
+                                <span>Electrified</span>
+                            </a>
+                        </div>
+            
+                        <div>
+                            <a href="./pages/sample.html">
+                                <img class="vehicles-image" src="../assets/car/elantra.png" alt="elantra image">
+                                <span>Compact & Sedan</span>
+                            </a>
+                        </div>
+            
+                        <div>
+                            <a href="./pages/sample.html">
+                                <img class="vehicles-image" src="../assets/car/ioniq-5-n.png" alt="ioniq-5-n image">
+                                <span>High Performance</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="./pages/sample.html">
+                                <span>View All Vehicles <img class="arrow-right" src="../assets/icon/arrow-right-thick.svg" alt="arrow icon"></span>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <div class="section-future">
+                        <span><a href="./pages/sample.html">Future Vehicles</a></span>
+                    </div>
+                </div>
+
+                <div class="third-header-shopping-tools" id="menu-shopping-tools">
+                    <div>
+                        <button class="third-header-cancel-btn"><img src="../assets/icon/cancel2.svg" alt="cancel image"></button>
+                    </div>
+                    <div class="section-shopping-tools">
+                        <div class="left-shopping-tools">
+                            <ul>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/tools-navy.svg" alt="Build & Price">
+                                        <div>Build & Price</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/page.svg" alt="Request a Quote">
+                                        <div>Request a Quote</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/car.svg" alt="Search New Inventory">
+                                        <div>Search New Inventory</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/cart.svg" alt="Shop Online">
+                                        <div>Shop Online</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/bookmark.svg" alt="Book a Test Drive">
+                                        <div>Book a Test Drive</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/transfer.svg" alt="Compare Vehicles">
+                                        <div>Compare Vehicles</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+    
+                        <div class="right-shopping-tools">
+                            <ul>
+                                <li><strong>Research</strong></li>
+                                <li><a href="./pages/sample.html">Explore all Vehicles</a></li>
+                                <li><a href="./pages/sample.html"><img class="imp-icon" src="../assets/icon/thunder.svg" alt="thunder image"> Is electric right for you?</a></li>
+                                <li><a href="./pages/sample.html"><img class="imp-icon" src="../assets/icon/thunder.svg" alt="thunder image"> Learn about our EVs and Hybrids</a></li>
+                                <li><a href="./pages/sample.html">Hyundai Warranties</a></li>
+                                <li><a href="./pages/sample.html">Compare Vehicles</a></li>
+                                <li><a href="./pages/sample.html">Compare Competitors<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                            </ul>
+                            <ul>
+                                <li><strong>Buy</strong></li>
+                                <li><a href="./pages/sample.html">Special Offers</a></li>
+                                <li><a href="./pages/sample.html">Help Me Choose</a></li>
+                                <li><a href="./pages/sample.html">Hyundai Motor Finance<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                                <li><a href="./pages/sample.html">Trade-in Appraisal</a></li>
+                                <li><a href="./pages/sample.html">Certified Pre-Owned<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                            </ul>
+    
+                        </div>
+                    </div>
+                    <div class="section-learn-more">
+                        <div>
+                            <span class="learn-section-link"><img src="../assets/icon/thunder.svg" alt="thunder image"></span>
+                            <h3>Explore our wide range of electrified vehicles.</h3>
+                            <p>Whether you're curious about charging or finding your perfect powertrain, we've got you covered.</p>
+    
+                            <div>
+                                <button class="blue-btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="third-header-shopping-tools" id="menu-owners">
+                    <div>
+                        <button class="third-header-cancel-btn"><img src="../assets/icon/cancel2.svg" alt="cancel image"></button>
+                    </div>
+                    <div class="section-shopping-tools">
+                        <div class="left-shopping-tools clearfix">
+                            <ul>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/tools-navy.svg" alt="Build & Price">
+                                        <div>Build & Price</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/page.svg" alt="Request a Quote">
+                                        <div>Request a Quote</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/car.svg" alt="Search New Inventory">
+                                        <div>Search New Inventory</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/cart.svg" alt="Shop Online">
+                                        <div>Shop Online</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/sample.html">
+                                        <img src="../assets/icon/bookmark.svg" alt="Book a Test Drive">
+                                        <div>Book a Test Drive</div>
+                                    </a>
+                                </li>
+                                <li>
+    
+                                </li>
+                                
+                            </ul>
+                        </div>
+    
+                        <div class="right-shopping-tools">
+                            <ul>
+                                <li><strong>Parts & Services</strong></li>
+                                <li><a href="./pages/sample.html">Schedule Service</a></li>
+                                <li><a href="./pages/sample.html">Parts</a></li>
+                                <li><a href="./pages/sample.html">Roadside Assistance</a></li>
+                                <li><a href="./pages/sample.html">Tire Finder<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                                <li><a href="./pages/sample.html">Shop Parts and Accessories</a></li>
+                                <li><a href="./pages/sample.html">Certified Collision Repair<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                            </ul>
+                            <ul>
+                                <li><strong>Your Hyundai</strong></li>
+                                <li><a href="./pages/sample.html">Over-the-Air Software Update</a></li>
+                                <li><a href="./pages/sample.html">Update Customer Information</a></li>
+                                <li><a href="./pages/sample.html">Change Ownership</a></li>
+                                <li><a href="./pages/sample.html">Map Updates<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                                <li><a href="./pages/sample.html">Recalls</a></li>
+                                <li><a href="./pages/sample.html">Hyundai Motor Finance<img class="link-icon" src="../assets/icon/link.svg" alt="link image"></a></li>
+                            </ul>
+    
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- main start -->
+    <main>
+        <section class="footer-faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question">What is the warranty on new vehicles?</button>
+                <div class="faq-answer">Hyundai offers a 5-year/100,000 km comprehensive limited warranty.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How can I schedule a test drive?</button>
+                <div class="faq-answer">You can book a test drive online through the 'Book a Test Drive' option under Shopping Tools.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Where can I find electrified models?</button>
+                <div class="faq-answer">All electrified models are listed under the 'Electrified' category in Vehicles.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What financing options are available?</button>
+                <div class="faq-answer">Hyundai provides various financing options including lease and loan programs with competitive rates.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How do I find my nearest Hyundai dealer?</button>
+                <div class="faq-answer">Use the 'Find My Dealer' feature at the top of the page to search by your location.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Can I trade in my current vehicle?</button>
+                <div class="faq-answer">Yes, you can use our online Trade-in Appraisal tool to estimate your vehicle’s value.</div>
+            </div>
+        </section>
+    </main>
+    <!-- main end -->
+
+
+    <!-- footer start -->
+    <footer>
+        <section class="footer-columns">
+            <div class="footer-column">
+                <h4>Vehicles</h4>
+                <ul>
+                    <li><a href="#">New Vehicles</a></li>
+                    <li><a href="#">Electrified Vehicles</a></li>
+                    <li><a href="#">Certified Pre-Owned <img src="../assets/icon/link.svg" alt="link icon"></a></li>
+                    <li><a href="#">Business Fleet</a></li>
+                    <li><a href="#">Genesis</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Research</h4>
+                <ul>
+                    <li><a href="#">Build &amp; Price</a></li>
+                    <li><a href="#">Electrified Vehicles Quiz</a></li>
+                    <li><a href="#">Help Me Choose</a></li>
+                    <li><a href="#">Compare Competitors <img src="../assets/icon/link.svg" alt="link icon"></a></li>
+                    <li><a href="#">Hyundai Warranties</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Buy</h4>
+                <ul>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Start buying process</a></li>
+                    <li><a href="#">Request a Quote</a></li>
+                    <li><a href="#">Trade-in Appraisal</a></li>
+                    <li><a href="#">Apply for Credit</a></li>
+                    <li><a href="#">Hyundai Motor Finance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Find your Hyundai</h4>
+                <ul>
+                    <li><a href="#">Book a Test Drive</a></li>
+                    <li><a href="#">Find a Dealer</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Parts &amp; Accessories</h4>
+                <ul>
+                    <li><a href="#">Parts &amp; Service Promotions</a></li>
+                    <li><a href="#">Hyundai Genuine Accessories</a></li>
+                    <li><a href="#">Hyundai Genuine Parts</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+            <h4>Owners</h4>
+                <ul>
+                    <li><a href="#">Schedule a Service</a></li>
+                    <li><a href="#">Maintenance Schedule</a></li>
+                    <li><a href="#">Roadside Assistance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Careers <img src="../assets/icon/link.svg" alt="link icon"></a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Sign up for Updates</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">Communication Preferences</a></li>
+                    <li><a href="#">Corporate Social Responsibility</a></li>
+                    <li><a href="#">Diversity and Inclusion</a></li>
+                    <li><a href="#">Awards &amp; Accolades</a></li>
+                    <li><a href="#">Hyundai Hope On Wheels</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="footer-faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question">What is the warranty on new vehicles?</button>
+                <div class="faq-answer">Hyundai offers a 5-year/100,000 km comprehensive limited warranty.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How can I schedule a test drive?</button>
+                <div class="faq-answer">You can book a test drive online through the 'Book a Test Drive' option under Shopping Tools.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Where can I find electrified models?</button>
+                <div class="faq-answer">All electrified models are listed under the 'Electrified' category in Vehicles.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What financing options are available?</button>
+                <div class="faq-answer">Hyundai provides various financing options including lease and loan programs with competitive rates.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How do I find my nearest Hyundai dealer?</button>
+                <div class="faq-answer">Use the 'Find My Dealer' feature at the top of the page to search by your location.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Can I trade in my current vehicle?</button>
+                <div class="faq-answer">Yes, you can use our online Trade-in Appraisal tool to estimate your vehicle’s value.</div>
+            </div>
+        </section>
+        
+
+        <div class="footer-details">
+            <div>
+                <img class="w-300" src="../assets/logo/footer-logo.png" alt="logo image">
+            </div>
+            <div class="footer-details-text">
+                <img class="w-40" src="../assets/logo/footer-logo2.svg" alt="logo image">
+                <div class="footer-details-text-description">
+                    <p>© 2024 Hyundai Canada</p>
+                    <p>The Hyundai name, logos, product names, feature names, images and slogans are trademarks owned or licensed by Hyundai Auto Canada Corp.</p>
+                    <p>NHL and the NHL Shield are registered trademarks of the National Hockey League. © NHL 2024. All Rights Reserved.</p>
+                    <p>NHLPA and the NHLPA logo are registered trademarks of the National Hockey League Players’ Association. © NHLPA. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-cookie">
+            <a href="#">
+                <img src="../assets/icon/cookie-black.png" alt="cookie icon">
+            </a>
+        </div>
+
+        <div class="footer-chat">
+            <a href="#">
+                <img src="../assets/icon/chat.png" alt="chat icon">
+            </a>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.faq-question').forEach(button => {
+                    button.addEventListener('click', function () {
+                        this.parentElement.classList.toggle('active');
+                    });
+                });
+            });
+            
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.second-header-center ul li');
+            const thirdHeaders = {
+                'Vehicles': document.getElementById('menu-vehicles'),
+                'Shopping Tools': document.getElementById('menu-shopping-tools'),
+                'Owners': document.getElementById('menu-owners')
+            };
+      
+            navItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+    
+                    const isActive = this.classList.contains('active');
+                    // Reset all states
+                    navItems.forEach(i => {
+                        i.classList.remove('active');
+                        const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'inline'; // down
+                            arrows[1].style.display = 'none'; // up
+                        }
+                    });
+    
+                    Object.values(thirdHeaders).forEach(section => {
+                        section.style.display = 'none';
+                    });
+    
+                    if (!isActive) {
+                        this.classList.add('active');
+                        const arrows = this.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'none'; // down
+                            arrows[1].style.display = 'inline'; // up
+                        }
+                        const menuLabel = this.textContent.trim();
+                        const targetSection = thirdHeaders[menuLabel];
+                        if (targetSection) {
+                            targetSection.style.display = 'block';
+                        }
+                    }
+                });
+            });
+      
+            // Set initial state: hide all third-header sections and up arrows
+            Object.values(thirdHeaders).forEach(section => {
+                section.style.display = 'none';
+            });
+      
+            document.querySelectorAll('.arrow-up').forEach(up => {
+                up.style.display = 'none';
+            });
+      
+            // Cancel buttons
+            document.querySelectorAll('.third-header-cancel-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    Object.values(thirdHeaders).forEach(section => {
+                        section.style.display = 'none';
+                    });
+      
+                    navItems.forEach(i => {
+                        i.classList.remove('active');
+                        const arrows = i.querySelectorAll('.arrow-down, .arrow-up');
+                        if (arrows.length) {
+                            arrows[0].style.display = 'inline'; // down
+                            arrows[1].style.display = 'none'; // up
+                        }
+                    });
+                });
+            });
+        });
+
+        const toggle = document.getElementById("menu-toggle");
+        const hamburgerImg = document.getElementById("hamburger-img");
+
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+            // 메뉴 열림: 햄버거 → 닫기 이미지 + 회전
+            hamburgerImg.src = "../assets/icon/cancel.svg";
+            hamburgerImg.style.animation = "rotateIn 0.3s forwards";
+            } else {
+            // 메뉴 닫힘: 닫기 → 햄버거 이미지 + 회전 반대
+            hamburgerImg.src = "../assets/icon/hamburger.png";
+            hamburgerImg.style.animation = "rotateOut 0.3s forwards";
+            }
+        });
+    
+        function showSubMenu(id) {
+            document.querySelector('.main-menu').style.display = 'none';
+            document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+        function hideSubMenu() {
+            document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+            document.querySelector('.main-menu').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
