@@ -363,8 +363,10 @@
     <main>
         <section class="banner">
             <div class="banner-images"> 
-                <img class="desktop-image" src="./assets/car/banner.png" alt="banner image">
-                <img class="mobile-image" src="./assets/car/banner_mobile.png" alt="banner mobile image">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="./assets/car/banner.png">
+                    <img src="./assets/car/banner_mobile.png" alt="banner image" style="width: 100%; height: auto;">
+                </picture>
             </div>
         </section>
 
