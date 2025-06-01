@@ -836,6 +836,14 @@ footer {
 }
 
 
+.footer-column h4::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  margin-top: 5px;
+}
 
 
 
