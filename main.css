@@ -892,7 +892,7 @@ footer {
     width: 100%;
   }
   .option-details ul {
-    gap: 2rem;
+    gap: 1.3rem;
   }
   .option-details .option-purpose {
     font-size: 0.875rem;
